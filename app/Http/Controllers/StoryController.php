@@ -33,12 +33,10 @@ class StoryController extends Controller
 
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
         ]);
-
 
         $story = new Story;
         $story->title = $validatedData['title'];

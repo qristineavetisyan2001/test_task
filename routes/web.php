@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,5 +20,6 @@ Route::get('/getApprovedStories', [StoryController::class, 'getApprovedStories']
 Route::get('/story/create', [StoryController::class, 'create'])->name('story.create');
 Route::post('/story', [StoryController::class, 'store'])->name('story.store');
 Route::get('/link_click/{id}', [StoryController::class, 'link_click'])->name('link_click');
+Route::post('/loginAdmin', [AdminController::class, 'login'])->name("loginAdmin");
 
 

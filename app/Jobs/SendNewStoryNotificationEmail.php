@@ -23,6 +23,6 @@ class SendNewStoryNotificationEmail implements ShouldQueue
 
     public function handle()
     {
-        Mail::to('admin@example.com')->send(new NewStoryNotification($this->mailData));
+        Mail::queue('admin@example.com')->send(new NewStoryNotification($this->mailData));
     }
 }
