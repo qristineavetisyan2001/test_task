@@ -19,4 +19,7 @@
             <button type="submit" class="btn btn-primary">Submit Story</button>
         </form>
     </div>
+    <div>
+        <a href="{{route('logOutAdmin')}}">Log Out</a>
+    </div>
 @endsection
