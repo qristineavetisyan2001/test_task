@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/admin', function () {
+Route::get('/', function () {
     return view('admin.adminLogin');
-})->name('loginAdmin');
+})->name('Admin');
 
 
 Route::get('/notice-board', [StoryController::class, 'index'])->name('notice-board.index');

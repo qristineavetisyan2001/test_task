@@ -22,9 +22,10 @@
         </div>
         <input type="submit" name="" value="Login">
     </form>
-    <a href="#">Forget Password<br> </a>
-    <div class="text-center">
-        <p style="color: #59238F;">Sign-Up</p>
+    <div style="color:white; text-align: center">
+        @if ($errors->any())
+            {{$errors}}
+        @endif
     </div>
 
 </div>
