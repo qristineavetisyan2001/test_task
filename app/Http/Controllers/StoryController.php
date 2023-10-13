@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use DateTime;
 use Illuminate\Http\Request;
 use App\Models\Story;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\URL;
 
 
 class StoryController extends Controller
@@ -16,7 +13,11 @@ class StoryController extends Controller
     public function index()
     {
         $stories = Story::where('approved', true)->get();
-        return view('notice_board', ['stories' => $stories]);
+        if (session("admin")) {
+            return view('notice_board', ['stories' => $stories]);
+        } else {
+            return view('admin.adminLogin');
+        }
     }
 
     public function getApprovedStories()
@@ -27,7 +28,12 @@ class StoryController extends Controller
 
     public function create()
     {
-        return view('create_story');
+        if (session("admin")) {
+            return view('create_story');
+        } else {
+            return view('admin.adminLogin');
+        }
+
     }
 
 

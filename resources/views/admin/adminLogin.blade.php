@@ -27,7 +27,6 @@
             {{$errors}}
         @endif
     </div>
-
 </div>
 
 </body>
