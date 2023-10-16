@@ -26,7 +26,7 @@ Route::get('/notice-board', [StoryController::class, 'index'])->name('notice-boa
 Route::get('/getApprovedStories', [StoryController::class, 'getApprovedStories'])->name('getApprovedStories');
 Route::get('/story/create', [StoryController::class, 'create'])->name('story.create');
 Route::post('/story', [StoryController::class, 'store'])->name('story.store');
-Route::get('/link_click/{id}', [StoryController::class, 'link_click'])->name('link_click');
+Route::get('/link_click/{hash}', [StoryController::class, 'link_click'])->name('link_click');
 Route::post('/admin', [AdminController::class, 'login'])->name("loginAdmin");
 Route::get('/logOutAdmin', [AdminController::class, 'logOut'])->name("logOutAdmin");
 

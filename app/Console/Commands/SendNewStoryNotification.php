@@ -2,11 +2,8 @@
 
 namespace App\Console\Commands;
 
-
 use App\Jobs\SendNewStoryNotificationEmail;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\NewStoryNotification;
 
 class SendNewStoryNotification extends Command
 {

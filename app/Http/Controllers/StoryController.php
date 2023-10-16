@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Story;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 
 class StoryController extends Controller
@@ -48,6 +49,7 @@ class StoryController extends Controller
         $story->title = $validatedData['title'];
         $story->description = $validatedData['description'];
         $story->admin_approval_token = md5(Hash::make(date('y-m-d h:i:s') . $story->title . $story->description));
+/*        $story->approval_token = Str::random(32);*/
         $story->save();
 
         Artisan::call('email:send-new-story-notification', ['story' => $story]);
@@ -55,8 +57,10 @@ class StoryController extends Controller
         return redirect()->route('notice-board.index')->with('success', 'Story submitted and pending approval.');
     }
 
-    public static function link_click($id)
+    public static function link_click($hash)
     {
+        $id = base64_decode($hash);
+
         Story::where('id', $id)->update(['approved' => true]);
 
         return response()->json(['message' => 'Story approved successfully']);
